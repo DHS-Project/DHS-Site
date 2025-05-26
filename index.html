@@ -3,22 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Site officiel du Department of Homeland Security San Andreas - FiveM RP">
   <title>DHS San Andreas - FiveM</title>
   <style>
+    :root {
+      --primary-bg: #f4f4f4;
+      --primary-text: #333;
+      --card-bg: white;
+      --header-bg: #1a1a1a;
+      --nav-bg: #2c2c2c;
+      --footer-bg: #1a1a1a;
+      --button-bg: #444;
+      --button-hover: #666;
+    }
+
+    body.dark-mode {
+      --primary-bg: #121212;
+      --primary-text: #e0e0e0;
+      --card-bg: #1e1e1e;
+      --header-bg: #000;
+      --nav-bg: #000;
+      --footer-bg: #000;
+      --button-bg: #333;
+      --button-hover: #555;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+      background-color: var(--primary-bg);
+      color: var(--primary-text);
+      transition: background-color 0.4s, color 0.4s;
     }
 
     header {
-      background-color: #1a1a1a;
+      background-color: var(--header-bg);
       color: #fff;
-      height: 100px;
       padding: 20px;
-      box-sizing: border-box;
-      text-align: center;
       position: fixed;
       top: 0;
       width: 100%;
@@ -27,77 +48,78 @@
 
     header h1 {
       margin: 0;
-      font-size: 2.5em;
+      font-size: 1.8em;
     }
 
     nav {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
-      background-color: #2c2c2c;
+      gap: 10px;
+      background-color: var(--nav-bg);
       padding: 10px;
       position: fixed;
-      top: 100px;
+      top: 80px;
       width: 100%;
       z-index: 999;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     }
 
     nav a {
       color: #fff;
       text-decoration: none;
       padding: 8px 12px;
+      border-radius: 5px;
       transition: background 0.3s;
     }
 
     nav a:hover {
       background-color: #444;
-      border-radius: 5px;
     }
 
     .container {
-      padding: 180px 20px 20px 20px;
+      padding: 160px 20px 40px;
       max-width: 1000px;
       margin: auto;
     }
 
     .card {
-      background: white;
+      background: var(--card-bg);
+      color: var(--primary-text);
       padding: 20px;
       border-radius: 10px;
       margin-bottom: 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(50px) scale(0.98);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
+    .card.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
 
     h2 {
-      color: #1a1a1a;
+      color: var(--primary-text);
     }
 
-    html {
-      scroll-padding-top: 160px;
-    }
     .pdf-button {
       display: inline-block;
       padding: 10px 20px;
       margin: 10px 0;
-      background-color: #1a1a1a;
+      background-color: var(--button-bg);
       color: white;
       text-decoration: none;
       border-radius: 8px;
-      transition: background 0.3s;
+      transition: background-color 0.3s;
     }
 
     .pdf-button:hover {
-      background-color: #444;
+      background-color: var(--button-hover);
     }
 
     footer {
-      background-color: #1a1a1a;
+      background-color: var(--footer-bg);
       color: white;
       text-align: center;
       padding: 20px;
@@ -113,50 +135,47 @@
     footer a:hover {
       text-decoration: underline;
     }
-    body.dark-mode {
-      background-color: #121212;
-      color: #e0e0e0;
+
+    #darkModeToggle {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: var(--button-bg);
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1001;
     }
-    
-    body.dark-mode .card {
-      background: #1e1e1e;
-      color: #e0e0e0;
+
+    #darkModeToggle:hover {
+      background-color: var(--button-hover);
     }
-    
-    body.dark-mode header,
-    body.dark-mode nav,
-    body.dark-mode footer {
-      background-color: #000;
-    }
-    
-    body.dark-mode nav a {
-      color: #e0e0e0;
-    }
-    
-    body.dark-mode nav a:hover {
-      background-color: #222;
-    }
-    
-    body.dark-mode .pdf-button {
-      background-color: #333;
-    }
-    
-    body.dark-mode .pdf-button:hover {
-      background-color: #555;
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.2em;
+      }
+      nav {
+        font-size: 0.9em;
+      }
+      .pdf-button {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-      <div style="display: flex; align-items: center; justify-content: space-between;">
-        <div style="display: flex; align-items: center; gap: 15px;">
-          <img src="img/dhs_logo.png" alt="DHS Logo" style="height: 60px;">
-          <h1>🇺🇸 Department of Homeland Security - San Andreas</h1>
-        </div>
-        <button id="darkModeToggle" style="padding: 10px 15px; border: none; border-radius: 5px; background-color: #444; color: white; cursor: pointer;">
-          🌙 Mode sombre
-        </button>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="assets/images/DHS.webp" alt="DHS Logo" style="height: 50px;">
+        <h1>🇺🇸 Department of Homeland Security - San Andreas</h1>
       </div>
+    </div>
   </header>
 
   <nav>
@@ -169,6 +188,8 @@
     <a href="#units">Unités Spéciales</a>
     <a href="#autres">Autres Agences</a>
   </nav>
+
+  <button id="darkModeToggle" aria-label="Activer/désactiver le mode sombre">🌙 Mode sombre</button>
 
   <div class="container">
     <section id="presentation" class="card">
@@ -195,12 +216,9 @@
 
     <section id="vehicules" class="card">
       <h2>🚓 Véhicules au seins du département</h2>
-
       🚧 En cours de rédaction
     </section>
 
-
-    <!-- Réinsertion des sections principales supprimées -->
     <section id="fps" class="card">
       <h2>🛡️ Federal Protective Service (FPS)</h2>
       <ul>
@@ -244,10 +262,12 @@
     <section id="units" class="card">
       <h2>🧵 Unités Spéciales</h2>
       <ul>
-        <li>🔫 SRT – Special Response Team</li>
+        <li>🔫 SRT – Special Response Team
         <a href="docs/Special_Response_Team_SRT.pdf" target="_blank" class="pdf-button">📄 Guide SRT</a>
-        <li>🪤 K9 – Unité canine</li>
+        </li>
+        <li>🪤 K9 – Unité canine
         <a href="docs/K9_Unit.pdf" target="_blank" class="pdf-button">📄 Guide K9</a>
+        </li>
       </ul>
     </section>
 
@@ -288,50 +308,32 @@
   </footer>
 
   <script>
-    // Animation JS : Fade-in au scroll
-    const cards = document.querySelectorAll('.card');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
 
-    cards.forEach(card => {
-      card.style.opacity = 0;
-      card.style.transform = 'translateY(50px)';
-      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    document.querySelectorAll('.card').forEach(card => {
       observer.observe(card);
     });
-  </script>
-  <script>
-    // Mode sombre
-    const toggleButton = document.getElementById('darkModeToggle');
-    toggleButton.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      toggleButton.textContent = document.body.classList.contains('dark-mode') 
-        ? '☀️ Mode clair' 
-        : '🌙 Mode sombre';
-    });
-  
-    // Animation JS : Fade-in au scroll (existant)
-    const cards = document.querySelectorAll('.card');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.1 });
-  
-    cards.forEach(card => {
-      card.style.opacity = 0;
-      card.style.transform = 'translateY(50px)';
-      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(card);
+
+    const toggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      body.classList.add('dark-mode');
+      toggle.textContent = '☀️ Mode clair';
+    }
+
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+      toggle.textContent = isDark ? '☀️ Mode clair' : '🌙 Mode sombre';
     });
   </script>
 </body>
