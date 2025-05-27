@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Site officiel du Department of Homeland Security San Andreas" />
-  <title>DHS - San Andreas</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Site officiel du Department of Homeland Security San Andreas - FiveM RP">
+  <title>DHS San Andreas - FiveM</title>
   <style>
     :root {
       --primary-bg: #f4f4f4;
@@ -15,6 +15,10 @@
       --footer-bg: #1a1a1a;
       --button-bg: #444;
       --button-hover: #666;
+    }
+
+    html{
+      scroll-behavior: smooth;
     }
 
     body.dark-mode {
@@ -52,17 +56,16 @@
     }
 
     nav {
-      background-color: var(--nav-bg);
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 10px;
+      background-color: var(--nav-bg);
       padding: 10px;
       position: fixed;
-      top: 80px;
+      top: 85px;
       width: 100%;
       z-index: 999;
-      transition: max-height 0.3s ease;
     }
 
     nav a {
@@ -75,39 +78,6 @@
 
     nav a:hover {
       background-color: #444;
-    }
-
-    .menu-toggle {
-      display: none;
-      position: fixed;
-      top: 90px;
-      right: 20px;
-      z-index: 1002;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .menu-toggle span {
-      height: 4px;
-      background: white;
-      border-radius: 3px;
-      transition: all 0.3s ease;
-    }
-
-    /* Menu Burger Animation */
-    .menu-toggle.open span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .menu-toggle.open span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-toggle.open span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
     }
 
     .container {
@@ -190,32 +160,14 @@
     }
 
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
-      nav {
-        flex-direction: column;
-        align-items: center;
-        overflow: hidden;
-        max-height: 0;
-      }
-
-      nav.open {
-        max-height: 500px; /* suffit pour tous les liens */
-      }
-
-      nav a {
-        width: 100%;
-        text-align: center;
-      }
-
       header h1 {
         font-size: 1.2em;
       }
-
+      nav {
+        font-size: 0.9em;
+      }
       .pdf-button {
-        width: 50%;
+        width: 100%;
         text-align: center;
       }
     }
@@ -231,13 +183,7 @@
     </div>
   </header>
 
-  <div class="menu-toggle" id="menuToggle" aria-label="Menu mobile">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-  <nav id="mainNav">
+  <nav>
     <a href="#presentation">Présentation</a>
     <a href="#vehicules">Véhicules</a>
     <a href="#fps">FPS</a>
@@ -250,7 +196,7 @@
 
   <button id="darkModeToggle" aria-label="Activer/désactiver le mode sombre">🌙 Mode sombre</button>
 
-<div class="container">
+  <div class="container">
     <section id="presentation" class="card">
       <h2>📘️ Présentation du Department of Homeland Security (DHS)</h2>
       <p>Le <strong>Department of Homeland Security</strong> de San Andreas est une institution fédérale fictive opérant dans le cadre du serveur RP FiveM. Son rôle est d'assurer la sécurité intérieure, la prévention des menaces, et la coordination entre différents services spécialisés.</p>
@@ -376,7 +322,9 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.card').forEach(card => observer.observe(card));
+    document.querySelectorAll('.card').forEach(card => {
+      observer.observe(card);
+    });
 
     const toggle = document.getElementById('darkModeToggle');
     const body = document.body;
@@ -391,23 +339,6 @@
       const isDark = body.classList.contains('dark-mode');
       localStorage.setItem('darkMode', isDark);
       toggle.textContent = isDark ? '☀️ Mode clair' : '🌙 Mode sombre';
-    });
-
-    // 🔥 Menu burger
-    const menuToggle = document.getElementById('menuToggle');
-    const nav = document.getElementById('mainNav');
-
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('open');
-      nav.classList.toggle('open');
-    });
-
-    // Ferme le menu après clic sur un lien
-    nav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('open');
-        menuToggle.classList.remove('open');
-      });
     });
   </script>
 </body>
