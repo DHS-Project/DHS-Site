@@ -154,11 +154,47 @@
       right: 20px;
       z-index: 1001;
     }
+    .counter-box {
+      background-color: var(--card-bg);
+      border-left: 5px solid #007bff;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .counter-box:hover {
+      transform: scale(1.02);
+    }
+
+    .counter-label {
+      font-weight: bold;
+      margin: 0 0 5px;
+    }
+
+    .counter-number {
+      font-size: 2em;
+      color: #007bff;
+    }
+
+    /* Couleurs personnalisées */
+    .counter-box.patrol     { border-left-color: #426cc1; }
+    .counter-box.srt        { border-left-color: #4d4445; }
+    .counter-box.k9         { border-left-color: #ff0707; }
+    .counter-box.cbp        { border-left-color: #28a745; }
+    .counter-box.ice        { border-left-color: #426cc1; }
+
+    .patrol .counter-number { color: #426cc1; }
+    .srt .counter-number    { color: #4d4445; }
+    .k9 .counter-number     { color: #ff0707; }
+    .cbp .counter-number    { color: #28a745; }
+    .ice .counter-number    { color: #426cc1; }
 
     #darkModeToggle:hover {
       background-color: var(--button-hover);
     }
-
+    
     @media (max-width: 768px) {
       header h1 {
         font-size: 1.2em;
@@ -199,19 +235,53 @@
   <div class="container">
     <section id="presentation" class="card">
       <h2>📘️ Présentation du Department of Homeland Security (DHS)</h2>
-      <p>Le <strong>Department of Homeland Security</strong> de San Andreas est une institution fédérale fictive opérant dans le cadre du serveur RP FiveM. Son rôle est d'assurer la sécurité intérieure, la prévention des menaces, et la coordination entre différents services spécialisés.</p>
+      <p>Le <strong>Department of Homeland Security</strong> de San Andreas est une institution fédérale. Son rôle est d'assurer la sécurité intérieure, la prévention des menaces, et la coordination entre différents services spécialisés.</p>
       <h3>🎖️ Structure des grades au sein du DHS :</h3>
       <ul>
         <li>🎓 Trainee Agent – En formation initiale.</li>
       </ul>
+      <a href="" target="_blank" class="pdf-button">📄 Présentation Projet / Pas de doc pour le moment</a>
     </section>
 
     <section id="vehicules" class="card">
       <h2>🚓 Véhicules au seins du département</h2>
-      <strong>🚧 En cours de rédaction</strong><br>
       2024 Whelen Legacy Mega Package - JADesigns<br>
       Livrées personnalisé <strong>EN COURS DE CONFECTION</strong><br>
-      <img src="assets/images/DurangoS_DHS.webp" alt="DurangoS DHS" style="width: 50%; padding: 10px;">
+      <img src="assets/images/DurangoS_DHS.webp" alt="DurangoS DHS" style="width: 50%; padding: 10px;"><br>
+      <section id="vehicules" class="card">
+      
+        <div class="counter-box total">
+          <p class="counter-label">Nombre total de véhicules prêts :</p>
+          <span id="vehicleCounter" class="counter-number">0</span>
+        </div>
+      
+        <div class="counter-box patrol">
+          <p class="counter-label">Voitures de patrouille :</p>
+          <span id="patrolCounter" class="counter-number">0</span>
+        </div>
+      
+        <div class="counter-box srt">
+          <p class="counter-label">Véhicules SRT :</p>
+          <span id="srtCounter" class="counter-number">0</span>
+        </div>
+      
+        <div class="counter-box k9">
+          <p class="counter-label">Véhicules K9 :</p>
+          <span id="k9Counter" class="counter-number">0</span>
+        </div>
+      
+        <div class="counter-box cbp">
+          <p class="counter-label">Véhicules CBP :</p>
+          <span id="cbpCounter" class="counter-number">0</span>
+        </div>
+      
+        <div class="counter-box ice">
+          <p class="counter-label">Véhicules ICE :</p>
+          <span id="iceCounter" class="counter-number">0</span>
+        </div>
+      
+        <p>🚧 Détails supplémentaires sur les véhicules en cours de rédaction...</p>
+      </section>
     </section>
 
     <section id="fps" class="card">
@@ -330,6 +400,34 @@
       localStorage.setItem('darkMode', isDark);
       toggle.textContent = isDark ? '☀️ Mode clair' : '🌙 Mode sombre';
     });
+
+
+    document.querySelectorAll('.card').forEach(card => {
+  observer.observe(card);
+});
+  function animateCounter(id, endValue, duration) {
+    const element = document.getElementById(id);
+    let start = 0;
+    const increment = endValue / (duration / 20);
+
+    const counterInterval = setInterval(() => {
+      start += increment;
+      if (start >= endValue) {
+        start = endValue;
+        clearInterval(counterInterval);
+      }
+      element.textContent = Math.floor(start);
+    }, 20);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    animateCounter("vehicleCounter", 1, 800); // Total
+    animateCounter("patrolCounter", 0, 800);   // Patrouille
+    animateCounter("srtCounter", 0, 800);      // SRT
+    animateCounter("k9Counter", 0, 800);       // K9
+    animateCounter("cbpCounter", 0, 800);      // CBP
+    animateCounter("iceCounter", 1, 800);      // ICE
+  });
   </script>
 </body>
 </html>
