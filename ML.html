@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions Légales - DHS San Andreas</title>
+  <style>
+    :root {
+      --primary-bg: #f4f4f4;
+      --primary-text: #333;
+      --card-bg: white;
+      --header-bg: #1a1a1a;
+      --nav-bg: #2c2c2c;
+      --footer-bg: #1a1a1a;
+      --button-bg: #444;
+      --button-hover: #666;
+    }
+
+    body.dark-mode {
+      --primary-bg: #121212;
+      --primary-text: #e0e0e0;
+      --card-bg: #1e1e1e;
+      --header-bg: #000;
+      --nav-bg: #000;
+      --footer-bg: #000;
+      --button-bg: #333;
+      --button-hover: #555;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--primary-text);
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      color: #fff;
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.6em;
+    }
+
+    nav {
+      background-color: var(--nav-bg);
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: fixed;
+      top: 85px;
+      width: 100%;
+      z-index: 999;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: var(--button-hover);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 140px auto 40px;
+      padding: 20px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      color: var(--primary-text);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background-color: var(--footer-bg);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    #darkModeToggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background-color: var(--button-bg);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      z-index: 1001;
+    }
+
+    #darkModeToggle:hover {
+      background-color: var(--button-hover);
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.2em;
+      }
+      nav {
+        font-size: 0.9em;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="assets/images/DHS.webp" alt="DHS Logo" style="height: 50px;">
+      <h1>🇺🇸 DHS San Andreas - Mentions Légales</h1>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">🏠 Retour à l’accueil</a>
+  </nav>
+
+  <button id="darkModeToggle">🌙 Mode sombre</button>
+
+  <div class="container">
+    <div class="card">
+      <h2>📌 Informations Générales</h2>
+      <p><strong>Nom du projet :</strong> Department of Homeland Security - San Andreas (FiveM RP)</p>
+      <p><strong>Responsable de publication :</strong> HonoEagle</p>
+      <p><strong>Hébergement :</strong> Ce site est hébergé par <a href="https://www.netlify.com/" target="_blank">Netlify</a>.</p>
+      <p><strong>Contact :</strong> Via Discord : <code>@_hon0</code></p>
+      <p><strong>GitHub :</strong></p>
+      <ul>
+        <li><a href="https://github.com/DHS-Project" target="_blank">Organisation du projet</a></li>
+        <li><a href="https://github.com/HonoEagle" target="_blank">Profil de HonoEagle</a></li>
+      </ul>
+      <p><strong>Utilisation :</strong> Ce site est destiné uniquement à un usage fictif dans le cadre d’un serveur de jeu RP sur FiveM. Aucune affiliation réelle avec le gouvernement des États-Unis.</p>
+    </div>
+
+    <div class="card">
+      <h2>🍪 Cookies</h2>
+      <p>Ce site ne dépose aucun cookie sur votre appareil.</p>
+    </div>
+
+    <div class="card">
+      <h2>⚠️ Limite de responsabilité</h2>
+      <p>Ce site étant un projet RP, les informations publiées sont fictives. L'équipe DHS San Andreas ne saurait être tenue responsable de l'utilisation des contenus hors cadre roleplay.</p>
+    </div>
+
+    <div class="card">
+      <h2>📜 Propriété intellectuelle</h2>
+      <p>Tous les contenus de ce site (textes, images, logos, guides PDF) sont la propriété de leurs auteurs respectifs. Toute reproduction est interdite sans autorisation.</p>
+    </div>
+
+    <div class="card">
+      <h2>🔒 Données personnelles</h2>
+      <p>Ce site ne collecte, ne stocke ni ne traite aucune donnée personnelle.</p>
+      <p>Les formulaires éventuels utilisés sont hébergés par Google Forms, soumis à leur propre politique de confidentialité.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© DHS San Andreas - RP Project | Design by HonoEagle</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      body.classList.add('dark-mode');
+      toggle.textContent = '☀️ Mode clair';
+    }
+
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+      toggle.textContent = isDark ? '☀️ Mode clair' : '🌙 Mode sombre';
+    });
+  </script>
+</body>
+</html>
